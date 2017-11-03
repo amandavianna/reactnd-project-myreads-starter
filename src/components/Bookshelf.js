@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Book from './Book'
 
 const Bookshelf = (props) => {
-  const { title, groupBooks } = props
+  const { title, groupBooks, updateBookShelf } = props
 
   return (
     <div className="bookshelf">
@@ -15,6 +15,7 @@ const Bookshelf = (props) => {
             <li key={book.id}>
               <Book
                 book={book}
+                updateBookShelf={updateBookShelf}
               />
             </li>
           ))}
@@ -26,7 +27,8 @@ const Bookshelf = (props) => {
 
 Bookshelf.propTypes = {
   title: PropTypes.string.isRequired,
-  groupBooks: PropTypes.array.isRequired
+  groupBooks: PropTypes.array.isRequired,
+  updateBookShelf: PropTypes.func
 }
 
 export default Bookshelf

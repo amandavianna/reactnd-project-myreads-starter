@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import BookShelfChanger from './BookShelfChanger'
 
 const Book = (props) => {
-    const { book } = props
+    const { book, updateBookShelf } = props
 
   return (
     <div className="book">
@@ -12,6 +12,7 @@ const Book = (props) => {
         <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
         <BookShelfChanger
           bookInShelf={book}
+          updateBookShelf={updateBookShelf}
         />
       </div>
       <div className="book-title">{book.title}</div>
@@ -24,7 +25,8 @@ const Book = (props) => {
 }
 
 Book.propTypes = {
-  book: PropTypes.object.isRequired
+  book: PropTypes.object.isRequired,
+  updateBookShelf: PropTypes.func
 }
 
 export default Book
