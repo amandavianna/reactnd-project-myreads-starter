@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import sortBy from 'sort-by'
 
 import * as BooksAPI from '../BooksAPI'
 import Book from './Book'
@@ -38,6 +39,8 @@ class SearchBooks extends Component {
   render() {
     const { updateBookShelf } = this.props
     const {query, searchResult} = this.state
+
+    searchResult.sort(sortBy('title'))
 
     return (
       <div className="search-books">
