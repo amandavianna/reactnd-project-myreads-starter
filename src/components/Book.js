@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import BookShelfChanger from './BookShelfChanger'
+import bookCoverNotAvailable from '../icons/camera.svg'
 
 class Book extends Component {
   state = {
+    bookCover: '',
     coverHeight: 0,
     coverWidth: 0
   }
@@ -15,6 +17,7 @@ class Book extends Component {
 
     bookImage.onload = (e) => {
       this.setState({
+        bookCover,
         coverHeight: bookImage.height,
         coverWidth: bookImage.width
       })
@@ -22,17 +25,25 @@ class Book extends Component {
   }
 
   componentDidMount() {
-    this.loadBookCover(this.props.book.imageLinks.thumbnail)
+    if (this.props.book.hasOwnProperty('imageLinks')) {
+      this.loadBookCover(this.props.book.imageLinks.thumbnail)
+    } else {
+      this.setState({
+        bookCover: bookCoverNotAvailable,
+        coverHeight: 193,
+        coverWidth: 128
+      })
+    }
   }
 
   render() {
     const { book, updateBookShelf } = this.props
-    const { coverHeight, coverWidth } = this.state
+    const { bookCover, coverHeight, coverWidth } = this.state
 
     return (
       <div className="book">
         <div className="book-top">
-        <div className="book-cover" style={{ width: coverWidth, height: coverHeight, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
+          <div className="book-cover" style={{ width: coverWidth, height: coverHeight, backgroundImage: `url(${bookCover})`}}></div>
           <BookShelfChanger
             bookInShelf={book}
             updateBookShelf={updateBookShelf}
