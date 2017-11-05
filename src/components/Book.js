@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import BookShelfChanger from './BookShelfChanger'
-import bookCoverNotAvailable from '../icons/camera.svg'
+import bookCoverNotAvailable from './../icons/camera.svg'
 
 class Book extends Component {
   state = {

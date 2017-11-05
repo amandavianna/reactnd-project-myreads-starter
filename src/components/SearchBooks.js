@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import sortBy from 'sort-by'
 import debounce from 'throttle-debounce/debounce'
 
-import * as BooksAPI from '../BooksAPI'
+import * as BooksAPI from './../utils/BooksAPI'
 import Book from './Book'
 
 class SearchBooks extends Component {
