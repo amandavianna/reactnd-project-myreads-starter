@@ -8,8 +8,12 @@ import * as BooksAPI from './utils/BooksAPI'
 import './styles/App.css'
 
 class BooksApp extends React.Component {
-  state = {
-    books: []
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      books: []
+    }
   }
 
   updateBookShelf = (book, shelf) => {

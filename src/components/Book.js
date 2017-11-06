@@ -5,10 +5,14 @@ import BookShelfChanger from './BookShelfChanger'
 import bookCoverNotAvailable from './../icons/camera.svg'
 
 class Book extends Component {
-  state = {
-    bookCover: '',
-    coverHeight: 0,
-    coverWidth: 0
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      bbookCover: '',
+      coverHeight: 0,
+      coverWidth: 0
+    }
   }
 
   loadBookCover(bookCover) {

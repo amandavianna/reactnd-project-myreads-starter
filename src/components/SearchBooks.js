@@ -8,9 +8,13 @@ import * as BooksAPI from './../utils/BooksAPI'
 import Book from './Book'
 
 class SearchBooks extends Component {
-  state = {
-    query: '',
-    searchResult: []
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      query: '',
+      searchResult: []
+    }
   }
 
   updateQuery = (query) => {
