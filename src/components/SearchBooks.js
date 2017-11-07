@@ -23,8 +23,20 @@ class SearchBooks extends Component {
   }
 
   updateSearchResult = (value) => {
+    const mergeBooks = value.map(searchBook => {
+        const foundBook = this.props.books.find(book => book.id === searchBook.id)
+
+        if(foundBook){
+          searchBook.shelf = foundBook.shelf
+        } else {
+          searchBook.shelf = 'none'
+        }
+
+        return searchBook
+    })
+
     this.setState({
-      searchResult: value
+      searchResult: mergeBooks
     })
   }
 
